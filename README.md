@@ -5,6 +5,9 @@ Gets N-length random numbers from the ANU Quantum Random Number Generator
 
 See here for more info: [http://photonics.anu.edu.au/qoptics/Research/qrng.php](http://photonics.anu.edu.au/qoptics/Research/qrng.php)
 
+[NPM Link](https://npmjs.com/package/qranode)
+
+
 ## Installation
 
 `npm i qranode`
