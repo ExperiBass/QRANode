@@ -28,5 +28,5 @@ let numbers = await qranode('uint8', 5)
 
 // you can even get hex!
 
-qranode('hex16', 5, 5) // get 5 hex strings, each string consisting of 5 hex blocks
+qranode('hex16', 5, 2) // get 5 hex strings, each string consisting of 2 hex blocks between 0000 and ffff
 ```

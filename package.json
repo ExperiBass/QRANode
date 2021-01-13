@@ -1,6 +1,7 @@
 {
   "name": "qranode",
-  "version": "1.0.0",
+  "prettifiedName": "QRANoDe",
+  "version": "1.5.0",
   "description": "## A quantum random number generator for node.js. Gets N-length random numbers from the ANU Quantum Random Number Generator See here for more info: [http://photonics.anu.edu.au/qoptics/Research/qrng.php](http://photonics.anu.edu.au/qoptics/Research/qrng.php)",
   "main": "qranode.js",
   "scripts": {
@@ -10,6 +11,6 @@
   "author": "ExperiBass",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.19.2"
+    "axios": "^0.21.1"
   }
 }
