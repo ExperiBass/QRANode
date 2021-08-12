@@ -24,7 +24,7 @@ qranode('uint8', 5) // get 5 numbers from 0 to 255
 
 // async/await
 
-let numbers = await qranode('uint8', 5)
+let numbers = await qranode('uint8', 5) // get 5 numbers from 0 to 65535
 
 // you can even get hex!
 
