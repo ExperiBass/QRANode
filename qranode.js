@@ -44,7 +44,14 @@ function warning(msg) {
  * @param {Number} [args.amount] - The amount of numbers to get. Max array size is `1024`. defaults to 1.
  * @param {Number} [args.blockSize] - The length of each hex block. Max block size is `1024`.  
  * Only used with `hex8` and `hex16`, if the `type` argument is different this doesn't matter.
- * @returns {Object} 
+ * @returns {Object} A JSON object with the success status, the type requested, the length of the array, and the array of numbers.
+ * @example
+    {
+    success: true,
+    type: 'hex16',
+    length: '2',
+    data: [ '2f2497d207a39d67', 'dd537fa2b1c4c6b2' ]
+    }
  */
 async function getRandomNumbers({apiKey, dataType = "uint8", amount = 1, blockSize = 1}) {
 

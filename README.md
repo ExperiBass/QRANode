@@ -1,7 +1,6 @@
 # QRANoDe
 
-## A quantum random number generator for node.js.
-Gets N-length random numbers from the ANU Quantum Random Number Generator
+## A wrapper for ANUs Quantum RNG API.
 
 See here for more info: https://anuquantumoptics.org/research-topics/qrng
 
