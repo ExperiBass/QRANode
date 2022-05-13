@@ -39,7 +39,7 @@ function warning(msg) {
  * 
  * - `hex16` - returns hexadecimal chunks between `0000` and `ffff`.
  * 
- * For the hexadecimal args, each block is made up of `blockSize` chunks.
+ * For the hexadecimal types, each block is made up of `blockSize` chunks.
  *
  * @param {Number} [args.amount] - The amount of numbers to get. Max array size is `1024`. Defaults to `1`.
  * @param {Number} [args.blockSize] - The length of each hex block. Max block size is `10`. Also defaults to `1`. 
