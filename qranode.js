@@ -1,11 +1,12 @@
 /**
  * Fork of https://github.com/cbumgard/node-qrand
- * Fork by: GingkathFox (Now known as ExperiBass)
+ * Fork by: ExperiBass
  */
+
 'use strict'
-//const fetch = require('fetch')
+
 const Axios = require('axios')
-const BASE_URL = 'http://qrng.anu.edu.au/API/jsonI.php'
+const BASE_URL = 'https://api.quantumnumbers.anu.edu.au'
 const LIMIT = 1024
 const VALID_TYPES = [
     'uint8',
@@ -13,16 +14,20 @@ const VALID_TYPES = [
     'hex16'
 ]
 const {
-    prettifiedName
+    prettifiedName,
+    name,
+    version
 } = require('./package.json')
 function warning(msg) {
     console.warn(`[${prettifiedName}:Warning] | ${msg}`)
 }
 
 /**
- * Get a random number from https://qrng.anu.edu.au/.
+ * Get a random number from https://quantumnumbers.anu.edu.au.
  * @async
- * @param {string} [type] - Must be either `uint8`, `uint16`, or `hex16`. Defaults to `uint8`.
+ * @param {Object} args
+ * @param {String} args.apiKey - Your API key.
+ * @param {String} [args.dataType] - Must be either `uint8`, `uint16`, or `hex16`. Defaults to `uint8`.
  *
  * - `uint8` - returns numbers between 0 and 255.
  *
@@ -32,12 +37,23 @@ function warning(msg) {
  * Each block is two bytes.  
  * For example, if you set `blockSize` to `4`, it would return hex between `00000000` and `ffffffff`.
  *
- * @param {number} [amount] - The amount of numbers to get. Max array size is `1024`. defaults to 1.
- * @param {number} [blockSize] - The length of each hex block. Max block size is `1024`.  
+ * @param {Number} [args.amount] - The amount of numbers to get. Max array size is `1024`. defaults to 1.
+ * @param {Number} [args.blockSize] - The length of each hex block. Max block size is `1024`.  
  * Only used with `hex16`, if the `type` argument is different this doesn't matter.
- * @returns {number[]|string[]} - An array of numbers if `uint8` or `uint16` were chosen, else an array of hexadecimal strings.
+ * @returns {Object} 
  */
-async function getRandomNumbers(dataType = "uint8", amount = 1, blockSize = 1) {
+async function getRandomNumbers({apiKey, dataType = "uint8", amount = 1, blockSize = 1}) {
+
+    // if theres no API key, don't bother doing anything else
+    if (!apiKey) {
+        throw Error(`The "apiKey" argument is required.`)
+    }
+    // set the headers
+    const HEADERS = {}
+    HEADERS["x-api-key"] = apiKey
+    HEADERS["x-user-agent"] = `${name}-v${version}`
+    
+    // now, start the actual request
 
     // shift to lowercase
     dataType = dataType.toLowerCase()
@@ -76,7 +92,9 @@ async function getRandomNumbers(dataType = "uint8", amount = 1, blockSize = 1) {
 
     // Time to get the data!
     try {
-        const response = (await Axios.get(`${BASE_URL}${args}`)).data
+        const response = (await Axios.get(`${BASE_URL}${args}`, {
+            headers: HEADERS
+        })).data
         // ^ extract the data from the Axios response
         return response
     } catch (e) {
