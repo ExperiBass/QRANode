@@ -45,7 +45,7 @@ function warning(msg) {
  * @param {Number} [args.blockSize] - The length of each hex block. Max block size is `10`. Also defaults to `1`. 
  * Only used with `hex8` and `hex16`, if the `type` argument is different this doesn't matter.
  * @returns {Object} A JSON object with the success status, the type requested, the length of the array, and the array of numbers.
- * @example
+ * @example // The example below is a request for two hex16 numbers with a block size of 4.
     {
     success: true,
     type: 'hex16',

@@ -29,7 +29,7 @@ let numbers = await qranode({apiKey: "THIS_IS_A_KEY", dataType: 'uint8', amount:
 qranode({apiKey: "THIS_IS_A_KEY", dataType: 'hex16', amount: 5, blockSize: 2}) // get 5 hex strings, each string consisting of 2 hex blocks between 0000 and ffff
 ```
 
-The API returns a JSON object with the success status, the type requested, the length of the array, and the array of numbers.
+The API returns a JSON object with the success status, the type requested, the length of the array, and the array of numbers. The example below is the result of a request for two hex16 numbers with a block size of 4.
 
 ```js
 {
