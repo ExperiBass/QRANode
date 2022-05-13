@@ -35,14 +35,14 @@ function warning(msg) {
  *
  * - `uint16` - returns numbers between 0 and 65535.
  *
- * - `hex8` - returns hexadecimal numbers between `00` and `ff`.
+ * - `hex8` - returns hexadecimal chunks between `00` and `ff`.
  * 
- * - `hex16` - returns hexadecimal numbers between `0000` and `ffff`.
- * Each block is two bytes.  
- * For example, if you set `blockSize` to `4`, it would return hex between `00000000` and `ffffffff`.
+ * - `hex16` - returns hexadecimal chunks between `0000` and `ffff`.
+ * 
+ * For the hexadecimal args, each block is made up of `blockSize` chunks.
  *
- * @param {Number} [args.amount] - The amount of numbers to get. Max array size is `1024`. defaults to 1.
- * @param {Number} [args.blockSize] - The length of each hex block. Max block size is `1024`.  
+ * @param {Number} [args.amount] - The amount of numbers to get. Max array size is `1024`. Defaults to `1`.
+ * @param {Number} [args.blockSize] - The length of each hex block. Max block size is `10`. Also defaults to `1`. 
  * Only used with `hex8` and `hex16`, if the `type` argument is different this doesn't matter.
  * @returns {Object} A JSON object with the success status, the type requested, the length of the array, and the array of numbers.
  * @example
