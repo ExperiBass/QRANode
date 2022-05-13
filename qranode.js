@@ -8,9 +8,11 @@
 const Axios = require('axios')
 const BASE_URL = 'https://api.quantumnumbers.anu.edu.au'
 const LIMIT = 1024
+const BLOCK_LIMIT = 10
 const VALID_TYPES = [
     'uint8',
     'uint16',
+    'hex8',
     'hex16'
 ]
 const {
@@ -33,13 +35,15 @@ function warning(msg) {
  *
  * - `uint16` - returns numbers between 0 and 65535.
  *
- * - `hex16` - returns hexadecimal characters between `00` and `ff`.
+ * - `hex8` - returns hexadecimal numbers between `00` and `ff`.
+ * 
+ * - `hex16` - returns hexadecimal numbers between `0000` and `ffff`.
  * Each block is two bytes.  
  * For example, if you set `blockSize` to `4`, it would return hex between `00000000` and `ffffffff`.
  *
  * @param {Number} [args.amount] - The amount of numbers to get. Max array size is `1024`. defaults to 1.
  * @param {Number} [args.blockSize] - The length of each hex block. Max block size is `1024`.  
- * Only used with `hex16`, if the `type` argument is different this doesn't matter.
+ * Only used with `hex8` and `hex16`, if the `type` argument is different this doesn't matter.
  * @returns {Object} 
  */
 async function getRandomNumbers({apiKey, dataType = "uint8", amount = 1, blockSize = 1}) {
@@ -82,10 +86,10 @@ async function getRandomNumbers({apiKey, dataType = "uint8", amount = 1, blockSi
     let args = `?type=${dataType}&length=${amount}`
 
     // and if the user wants hexadecimal, make sure the blockSize is not too large either
-    if (dataType === 'hex16') {
-        if (blockSize > LIMIT) {
-            warning(`The "blockSize" argument is larger than the limit of ${LIMIT}. Resetting to ${LIMIT}.`)
-            blockSize = LIMIT
+    if (dataType === 'hex16' || dataType === 'hex8') {
+        if (blockSize > BLOCK_LIMIT) {
+            warning(`The "blockSize" argument is larger than the limit of ${BLOCK_LIMIT}. Resetting to ${BLOCK_LIMIT}.`)
+            blockSize = BLOCK_LIMIT
         }
         args += `&size=${blockSize}`
     }
