@@ -64,12 +64,15 @@ async function getRandomNumbers({
     }
 
     // shift dataType to lowercase
-    dataType = dataType?.toLowerCase()
+    dataType = dataType.toLowerCase()
 
     // do some quick validation, requesting negative numbers from
     // a quantum void would probably end the world
-    if (!dataType || !VALID_TYPES.includes(dataType)) {
+    if (!VALID_TYPES.includes(dataType)) {
         throw new Error(`The 'dataType' argument must be one of these: ${VALID_TYPES.join(', ')}`)
+    }
+    if (!amount || typeof amount !== 'number') {
+        throw new Error(`The 'amount' argument needs to be a positive integer.`)
     }
     if (amount < 1) {
         warning(`The 'amount' argument can't be less than one. Resetting amount to one.`)
@@ -83,6 +86,9 @@ async function getRandomNumbers({
 
     // if the user wants hexadecimal, make sure the blockSize is within bounds
     if (dataType === 'hex16' || dataType === 'hex8') {
+        if (!blockSize || typeof blockSize !== 'number') {
+            throw new Error(`The 'blockSize' argument needs to be a positive integer.`)
+        }
         if (blockSize < 1) {
             warning(`The 'blockSize' argument can't be less than one. Resetting blockSize to one.`)
             blockSize = 1
@@ -100,6 +106,7 @@ async function getRandomNumbers({
 
     // Time to get the data!
     try {
+        console.log(new URLSearchParams(reqParams))
         const response = (await Axios.get(`${BASE_URL}?${new URLSearchParams(reqParams)}`, {
             headers: HEADERS
         })).data

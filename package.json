@@ -1,7 +1,7 @@
 {
   "name": "qranode",
-  "prettifiedName": "QRANoDe",
-  "version": "2.0.0",
+  "prettifiedName": "QRANode",
+  "version": "2.1.0",
   "description": "A wrapper for ANUs Quantum RNG API",
   "main": "qranode.js",
   "keywords": [
@@ -18,10 +18,10 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ExperiBass/QRANoDe.git"
+    "url": "git+https://github.com/ExperiBass/QRANode.git"
   },
   "bugs": {
-    "url": "https://github.com/ExperiBass/QRANoDe/issues"
+    "url": "https://github.com/ExperiBass/QRANode/issues"
   },
-  "homepage": "https://github.com/ExperiBass/QRANoDe#readme"
+  "homepage": "https://github.com/ExperiBass/QRANode#readme"
 }
