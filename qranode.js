@@ -1,8 +1,3 @@
-/**
- * Fork of https://github.com/cbumgard/node-qrand
- * Fork by: ExperiBass
- */
-
 'use strict'
 
 const Axios = require('axios')
