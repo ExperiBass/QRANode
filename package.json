@@ -2,19 +2,26 @@
   "name": "qranode",
   "prettifiedName": "QRANoDe",
   "version": "2.0.0",
-  "description": "A wrapper for ANUs Quantum RNG API. See here for more info: http://photonics.anu.edu.au/qoptics/Research/qrng.php",
+  "description": "A wrapper for ANUs Quantum RNG API",
   "main": "qranode.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "keywords": [
+    "qrng",
     "rng",
     "quantum",
-    "api"
+    "anu"
   ],
   "author": "ExperiBass",
-  "license": "ISC",
+  "license": "GPL-3.0-or-later",
   "dependencies": {
-    "axios": "0.27.2"
-  }
+    "axios": "1.4.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ExperiBass/QRANoDe.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ExperiBass/QRANoDe/issues"
+  },
+  "homepage": "https://github.com/ExperiBass/QRANoDe#readme"
 }
