@@ -1,4 +1,4 @@
-# QRANoDe
+# QRANode
 
 ## A wrapper for ANUs Quantum RNG API.
 
