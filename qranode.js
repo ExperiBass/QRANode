@@ -53,7 +53,7 @@ async function getRandomNumbers({
     // prepare param object
     let reqParams = {}
     // set the headers
-    const HEADERS = {}
+    let HEADERS = {}
     HEADERS['x-api-key'] = apiKey
     HEADERS['x-user-agent'] = userAgent || `${name}-v${version}`
 
@@ -63,6 +63,9 @@ async function getRandomNumbers({
         throw new Error(`The 'apiKey' argument is required.`)
     }
 
+    if (!dataType || typeof dataType !== 'string') {
+        throw new Error(`The 'dataType' argument must be one of these: ${VALID_TYPES.join(', ')}`)
+    }
     // shift dataType to lowercase
     dataType = dataType.toLowerCase()
 
@@ -106,7 +109,6 @@ async function getRandomNumbers({
 
     // Time to get the data!
     try {
-        console.log(new URLSearchParams(reqParams))
         const response = (await Axios.get(`${BASE_URL}?${new URLSearchParams(reqParams)}`, {
             headers: HEADERS
         })).data
