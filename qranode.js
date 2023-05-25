@@ -26,7 +26,7 @@ function warning(msg) {
  * @param {String} args.apiKey Your API key. An error will be thrown if not provided.
  * @param {String} args.userAgent A custom user agent. If undefined, defaults to using the package name and version.
  * @param {String} [args.dataType] Must be either `uint8`, `uint16`, or `hex16`. Defaults to `uint8`.
- * 
+ *
  * - `uint8` - returns numbers between 0 and 255.  
  * - `uint16` - returns numbers between 0 and 65535.  
  * - `hex8` - returns hexadecimal chunks between `00` and `ff`.  
