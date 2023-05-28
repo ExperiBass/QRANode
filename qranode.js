@@ -74,14 +74,13 @@ async function getRandomNumbers({
     if (!VALID_TYPES.includes(dataType)) {
         throw new Error(`The 'dataType' argument must be one of these: ${VALID_TYPES.join(', ')}`)
     }
-    if (!amount || typeof amount !== 'number') {
+    if (!amount || typeof amount !== 'number' || isNaN(amount)) {
         throw new Error(`The 'amount' argument needs to be a positive integer.`)
     }
     if (amount < 1) {
         warning(`The 'amount' argument can't be less than one. Resetting amount to one.`)
         amount = 1
     }
-    // now make sure the 'amount' argument isn't too large
     if (amount > LIMIT) {
         warning(`The 'amount' argument is larger than the limit of ${LIMIT}. Resetting to ${LIMIT}.`)
         amount = LIMIT
@@ -89,7 +88,7 @@ async function getRandomNumbers({
 
     // if the user wants hexadecimal, make sure the blockSize is within bounds
     if (dataType === 'hex16' || dataType === 'hex8') {
-        if (!blockSize || typeof blockSize !== 'number') {
+        if (!blockSize || typeof blockSize !== 'number' || isNaN(blockSize)) {
             throw new Error(`The 'blockSize' argument needs to be a positive integer.`)
         }
         if (blockSize < 1) {
